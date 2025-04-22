@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace BulkyWeb.Models
 {
@@ -36,6 +37,8 @@ namespace BulkyWeb.Models
 
         [ForeignKey("CategoryId")]
         public Category? Category { get; set; }
+        [ValidateNever]
+        public string ImageURL { get; set; }
 
 
     }

@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Product Details";  
+}
+
+<form method="post">
+    <div class="card shadow-sm border-0 mt-4">
+        <div class="card-header bg-secondary bg-gradient text-light py-4 text-center">
+            <h3 class="text-uppercase mb-0">@Model.Title</h3>
+            <p class="text-light fw-light fst-italic">by @Model.Author</p>
+        </div>
+        <div class="card-body bg-light">
+            <div class="row mb-4">
+                <div class="col-md-3 text-center mb-3">
+                    <img src="@Model.ImageURL" class="img-fluid rounded" alt="Product Image" />
+                    <a asp-action="Index" class="btn btn-outline-primary mt-3 btn-sm">
+                        <i class="bi bi-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+
+                <div class="col-md-8 offset-md-1">
+                    <span class="badge bg-dark mb-2">@Model.Category?.Name</span>
+
+                    <p class="text-muted">ISBN: <strong>@Model.ISBN</strong></p>
+
+                    <h6 class="text-muted">
+                        List Price:
+                        <span class="text-decoration-line-through">@Model.ListPrice.ToString("C")</span>
+                    </h6>
+
+                    <div class="row text-center mb-2">
+                        <div class="col fw-bold text-secondary">Quantity</div>
+                        <div class="col fw-bold text-secondary">1–50</div>
+                        <div class="col fw-bold text-secondary">51–100</div>
+                        <div class="col fw-bold text-secondary">100+</div>
+                    </div>
+                    <div class="row text-center mb-3">
+                        <div class="col text-warning fw-bold">Price</div>
+                        <div class="col text-warning fw-bold">@Model.Price.ToString("C")</div>
+                        <div class="col text-warning fw-bold">@Model.Price50.ToString("C")</div>
+                        <div class="col text-warning fw-bold">@Model.Price100.ToString("C")</div>
+                    </div>
+
+                    <p class="lh-sm text-secondary">
+                        @Model.Description
+                    </p>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">Quantity</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white border-0">Count</span>
+                                <input type="number" class="form-control text-end" value="1" min="1" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" disabled class="btn btn-primary w-100 text-uppercase fw-semibold">
+                                Add to Cart (Coming Soon...)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

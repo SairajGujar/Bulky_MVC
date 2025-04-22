@@ -7,7 +7,9 @@
 
 <h2 class="mb-4">Edit Product</h2>
 
-<form asp-action="Edit" method="post">
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Edit" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
     <input type="hidden" asp-for="Id" />
 
     <div class="form-group mb-3">
@@ -66,7 +68,24 @@
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
+    <input type="hidden" asp-for="ImageURL" />
+
+    <div class="form-group mb-3">
+        <label class="form-label">Upload New Image (optional)</label>
+        <input name="image" type="file" class="form-control" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ImageURL))
+    {
+        <div class="mb-3">
+            <label class="form-label">Current Image:</label>
+            <div>
+                <img src="@Model.ImageURL" alt="Product Image" style="max-height: 200px;" />
+            </div>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary">Update</button>
     <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
 </form>
 
